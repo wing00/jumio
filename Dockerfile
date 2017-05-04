@@ -10,4 +10,8 @@ RUN pip install -r requirements.txt
 ADD . /django/
 
 ENV DJANGO_SETTINGS_MODULE jumio.settings
-ENV DOCKER_HOST db
+
+EXPOSE 8000
+
+CMD python manage.py collectstatic --noinput
+CMD gunicorn jumio.wsgi -b 0.0.0.0:8000

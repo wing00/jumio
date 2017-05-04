@@ -1,22 +1,11 @@
 version: '2'
 services:
-  db:
-    image: postgres
-    container_name: jumio_postgres
-    environment:
-      POSTGRES_USER: docker
-      POSTGRES_PASSWORD: docker
 
   web:
     build: .
     container_name: jumio_django
-    command: bash -c "python manage.py migrate && python manage.py collectstatic --noinput && gunicorn jumio.wsgi -b 0.0.0.0:8000"
     volumes:
       - .:/django
-    expose:
-      - "8000"
-    depends_on:
-      - db
 
   nginx:
     image: nginx

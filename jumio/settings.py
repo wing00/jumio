@@ -76,28 +76,13 @@ WSGI_APPLICATION = 'jumio.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.10/ref/settings/#databases
 
-if 'DOCKER_HOST' in os.environ:
-    # Docker Settings
 
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.postgresql_psycopg2',
-            'NAME': 'docker',
-            'USER': 'docker',
-            'PASSWORD': 'docker',
-            'HOST': 'db',
-            'PORT': 5432,
-            'ATOMIC_REQUESTS': True,
-        },
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
-    EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-else:
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-        }
-    }
+}
 
 AUTH_PASSWORD_VALIDATORS = [
     {

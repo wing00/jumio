@@ -1,6 +1,7 @@
 from rest_framework import status
 from django.shortcuts import render
 from django.http import JsonResponse, QueryDict
+from django.views.generic import TemplateView
 import logging
 
 logger = logging.getLogger('testlogger')
@@ -19,3 +20,8 @@ def jumio_webhook(request):
                  })
 
     return JsonResponse(result, status=status.HTTP_200_OK)
+
+
+class IndexView(TemplateView):
+    template_name = "index.html"
+

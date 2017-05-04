@@ -169,11 +169,16 @@ LOGGING = {
             'level': 'DEBUG',
             'class': 'logging.StreamHandler',
             'formatter': 'verbose'
+        },
+        'file': {
+            'level': 'DEBUG',
+            'class': 'logging.FileHandler',
+            'filename': '/django/logs/debug.log'
         }
     },
     'loggers': {
         'testlogger': {
-            'handlers': ['console'],
+            'handlers': ['console', 'file'],
             'level': 'INFO',
         }
     }

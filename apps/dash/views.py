@@ -11,7 +11,6 @@ def hello(request):
 
 
 def jumio_webhook(request):
-
     result = QueryDict(request.body)
 
     logger.info({"raw": request,
